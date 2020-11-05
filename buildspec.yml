@@ -8,14 +8,14 @@ env:
 phases: 
 
   install:
+    runtime-versions:
+        nodejs: 12
     commands:
       - echo "step: install step"
       # Install all dependencies (including dependencies for running tests)
       # - cd glasswall-fe
       # - npm install
       # - cd ..
-    runtime-versions:
-        nodejs: 12
       
   pre_build:
     commands:
@@ -51,6 +51,6 @@ phases:
 artifacts:
   commands:
     - echo "step: artifacts"
-  # type: zip
+  type: zip
   # files:
   #   - template-export.yml
