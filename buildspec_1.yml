@@ -1,0 +1,59 @@
+version: 0.2
+
+env:
+  variables:
+    S3_BUCKET: adv-glasswall-fe-public
+    S3_PREFIX: GlassWall-DEV
+
+phases: 
+
+  install:
+    runtime-versions:
+        nodejs: 12
+    commands:
+      - echo "begin phase install"
+      # Install all dependencies (including dependencies for running tests)
+      # - cd glasswall-fe
+      # - npm install
+      # - cd ..
+      
+  pre_build:
+    commands:
+      - echo "begin phase pre_build"
+      - sam validate
+      - if [ $? -ne 0 ]; then echo "error, sam validate"; exit 10; fi
+      # Discover and run unit tests in the '__tests__' directory
+      # - cd glasswall-fe
+      # - npm run test
+      # Remove all dependencies not needed for the Lambda deployment package (the packages from devDependencies in package.json)
+      # - npm prune --production      
+      # - echo "PRE BUILD2"
+      # - cd ..
+
+  build: 
+    commands:
+      - echo "begin phase build"
+      # - cd glasswall-fe
+      # - npm run build
+      # - set | sort
+      # - cd ..
+      - sam build
+      - if [ $? -ne 0 ]; then echo "error, sam build"; exit 10; fi
+
+  post_build:
+    commands:
+      - echo "begin phase post_build"
+      - 
+      # - cd glasswall-fe
+      # - aws s3 ls 
+      # - aws s3 sync build/ s3://$S3_BUCKET --acl public-read
+      # #- aws cloudformation package --template template.yml --s3-bucket $S3_BUCKET --output-template template-export.yml
+      # - echo "POST BUILD DONE `date` "
+      # - cd ..
+
+artifacts:
+  commands:
+    - echo "begin phase artifacts"
+  type: zip
+  # files:
+  #   - template-export.yml

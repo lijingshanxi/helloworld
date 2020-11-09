@@ -1,0 +1,2 @@
+### local host
+GET http://127.0.0.1:3000/lijingTestHelloWorld?Test_Site=TSMC&Test_Stage=Wafer BE
