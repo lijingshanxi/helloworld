@@ -5,7 +5,7 @@ phases:
         nodejs: 12
   build:
     commands:
-      - sam package --template-file template.yml --s3-bucket s3://lijing-test-be/be/ --output-template-file packaged-template.yml
+      - sam package --template-file template.yaml --s3-bucket lijing-test-be --s3-prefix be --region eu-central-1 --output-template-file packaged-template.yaml
 artifacts:
   files:
     - packaged-template.yml
