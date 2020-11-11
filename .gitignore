@@ -1,2 +1,3 @@
 .aws-sam
 .vscode
+glasswall-be-js/packaged-template-be-js.yaml
