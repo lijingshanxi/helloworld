@@ -9,6 +9,9 @@ Resources:
     Properties:
       Handler: index.handler
       Runtime: nodejs12.x
+      AutoPublishAlias: live
+      DeploymentPreference:
+        Type: Linear10PercentEvery1Minute
       CodeUri: .
       Description: >-
         glasswall backend (read/write to DynamoDB) with a RESTful API endpoint
