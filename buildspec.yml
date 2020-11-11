@@ -4,6 +4,9 @@ env:
   variables:
     S3_BUCKET: adv-glasswall-fe-public
     S3_PREFIX: GlassWall-DEV
+    S3_BUCKET_BE: glasswall-codebuild
+    S3_BUCKET_BE_PREFIX: be
+    GLASSWALL_REGIN: cn-northwest-1
 
 phases: 
 
@@ -40,7 +43,7 @@ phases:
       - cd $CODEBUILD_SRC_DIR/glasswall-be-js
       - sam build
       - if [ $? -ne 0 ]; then echo "error, sam build"; exit 10; fi
-      - sam package --template-file template.yaml --s3-bucket glasswall-codebuild --s3-prefix be --region eu-central-1 --output-template-file packaged-template-be-js.yaml
+      - sam package --template-file template.yaml --s3-bucket $S3_BUCKET_BE --s3-prefix $S3_BUCKET_BE_PREFIX --region $GLASSWALL_REGIN --output-template-file packaged-template-be-js.yaml
       - cd ..
 
   post_build:
