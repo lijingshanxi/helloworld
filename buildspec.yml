@@ -49,7 +49,8 @@ phases:
       # - sam deploy --template-file ./packaged-template-be-js.yaml --capabilities CAPABILITY_IAM --region $GLASSWALL_REGIN --stack-name $BE_JS_STACK_NAME
       # - if [ $? -ne 0 ]; then echo "error, sam deploy"; cd ..; exit 10; fi
       # - aws s3 ls $S3_BUCKET_BE/$S3_BUCKET_BE_PREFIX
-      - sam deploy -t template.yaml --stack-name $BE_JS_STACK_NAME --s3-bucket $S3_BUCKET_BE --s3-prefix $S3_BUCKET_BE_PREFIX --capabilities CAPABILITY_NAMED_IAM --region $GLASSWALL_REGIN
+      - echo deploy -t template.yaml --stack-name $BE_JS_STACK_NAME --s3-bucket $S3_BUCKET_BE --s3-prefix $S3_BUCKET_BE_PREFIX --capabilities CAPABILITY_IAM --region $GLASSWALL_REGIN 
+      - sam deploy -t template.yaml --stack-name $BE_JS_STACK_NAME --s3-bucket $S3_BUCKET_BE --s3-prefix $S3_BUCKET_BE_PREFIX --capabilities CAPABILITY_IAM --region $GLASSWALL_REGIN
       - if [ $? -ne 0 ]; then echo "error, sam deploy"; cd ..; exit 10; fi
       - cd ..
 
