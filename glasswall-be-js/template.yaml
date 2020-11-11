@@ -3,16 +3,15 @@ Transform: 'AWS::Serverless-2016-10-31'
 Description: >-
   A simple backend (read/write to DynamoDB) with a RESTful API endpoint using
   Amazon API Gateway.
-
 Resources:
-  lijingCicdTestFun:
+  glasswallFunJs:
     Type: 'AWS::Serverless::Function'
     Properties:
       Handler: index.handler
       Runtime: nodejs12.x
       CodeUri: .
       Description: >-
-        A simple backend (read/write to DynamoDB) with a RESTful API endpoint
+        glasswall backend (read/write to DynamoDB) with a RESTful API endpoint
         using Amazon API Gateway.
       MemorySize: 512
       Timeout: 10
@@ -21,7 +20,5 @@ Resources:
         Api1:
           Type: Api
           Properties:
-            Path: /lijingCicdTestApi
+            Path: /glasswall-be-js-api
             Method: ANY
-      Tags:
-        'lambda-console:blueprint': microservice-http-endpoint

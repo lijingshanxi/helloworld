@@ -1,0 +1,13 @@
+### local host
+GET http://127.0.0.1:3000/UseYourUrl?Test_Site=TSMC&Test_Stage=Wafer BE
+
+### UseYourUrl
+GET https://99sfcwfdjf.execute-api.eu-central-1.amazonaws.com/default/UseYourUrl?Test_Site=AMKOR&Test_Stage=Tested MCM
+
+
+### Prod
+GET https://azwaznstgk.execute-api.eu-central-1.amazonaws.com/Prod/UseYourUrl?Test_Site=AMKOR&Test_Stage=Tested MCM
+
+
+### Dev
+GET https://azwaznstgk.execute-api.eu-central-1.amazonaws.com/Dev/UseYourUrl?Test_Site=AMKOR&Test_Stage=Tested MCM

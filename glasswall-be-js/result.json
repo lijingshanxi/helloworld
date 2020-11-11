@@ -1,0 +1,19 @@
+{
+    "Item": {
+        "Price_Accumulate": 7000,
+        "Yield": 0.9,
+        "Actual_Cycle": 0,
+        "Test_Date": 1603768683152,
+        "Price_Single_Unit": 0,
+        "Test_Units": [
+            "06F4_20200826202206",
+            "06F4_20200826202208",
+            "24E5_20200815064011"
+        ],
+        "Cycle_Week": 4,
+        "Test_Site": "TSMC",
+        "Units_Count": 3,
+        "Test_Stage": "Wafer BE",
+        "Actual_Yield": 0
+    }
+}
