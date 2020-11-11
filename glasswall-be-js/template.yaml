@@ -15,7 +15,7 @@ Resources:
         using Amazon API Gateway.
       MemorySize: 512
       Timeout: 10
-      Role: 'arn:aws:iam::359221844733:role/glasswall-be-dev-eu-central-1-lambdaRole'
+      Role: 'arn:aws-cn:iam::814049249523:role/glasswall-lambda-role'
       Events:
         Api1:
           Type: Api
