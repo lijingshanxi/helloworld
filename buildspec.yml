@@ -45,6 +45,8 @@ phases:
       - if [ $? -ne 0 ]; then echo "error, sam build"; exit 10; fi
       - sam package --template-file template.yaml --s3-bucket $S3_BUCKET_BE --s3-prefix $S3_BUCKET_BE_PREFIX --region $GLASSWALL_REGIN --output-template-file packaged-template-be-js.yaml
       - if [ $? -ne 0 ]; then echo "error, sam package"; exit 10; fi
+      - sam deploy --template-file ./packaged-template-be-js.yaml --capabilities CAPABILITY_NAMED_IAM --stack-name glasswall-be-js-stack
+      - if [ $? -ne 0 ]; then echo "error, sam deploy"; exit 10; fi
       - aws s3 ls $S3_BUCKET_BE/$S3_BUCKET_BE_PREFIX
       - cd ..
 
