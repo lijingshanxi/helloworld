@@ -38,8 +38,6 @@ phases:
       - echo Building the backend-js code...
       - echo $CODEBUILD_SRC_DIR
       - cd $CODEBUILD_SRC_DIR/glasswall-be-js
-      - sam validate
-      - if [ $? -ne 0 ]; then echo "error, sam validate"; exit 10; fi
       - sam build
       - if [ $? -ne 0 ]; then echo "error, sam build"; exit 10; fi
       - sam package --template-file template.yaml --s3-bucket glasswall-codebuild --s3-prefix be --region eu-central-1 --output-template-file packaged-template-be-js.yaml
