@@ -7,6 +7,7 @@ env:
     S3_BUCKET_BE: glasswall-codebuild
     S3_BUCKET_BE_PREFIX: be
     GLASSWALL_REGIN: cn-northwest-1
+    BE_JS_STACK_NAME: glasswall-be-js-stack
 
 phases: 
 
@@ -43,11 +44,13 @@ phases:
       - cd $CODEBUILD_SRC_DIR/glasswall-be-js
       - sam build
       - if [ $? -ne 0 ]; then echo "error, sam build"; cd ..; exit 10; fi
-      - sam package --template-file template.yaml --s3-bucket $S3_BUCKET_BE --s3-prefix $S3_BUCKET_BE_PREFIX --region $GLASSWALL_REGIN --output-template-file packaged-template-be-js.yaml
-      - if [ $? -ne 0 ]; then echo "error, sam package"; cd ..; exit 10; fi
-      - sam deploy --template-file ./packaged-template-be-js.yaml --capabilities CAPABILITY_IAM --region $GLASSWALL_REGIN --stack-name glasswall-be-js-stack
+      # - sam package --template-file template.yaml --s3-bucket $S3_BUCKET_BE --s3-prefix $S3_BUCKET_BE_PREFIX --region $GLASSWALL_REGIN --output-template-file packaged-template-be-js.yaml
+      # - if [ $? -ne 0 ]; then echo "error, sam package"; cd ..; exit 10; fi
+      # - sam deploy --template-file ./packaged-template-be-js.yaml --capabilities CAPABILITY_IAM --region $GLASSWALL_REGIN --stack-name $BE_JS_STACK_NAME
+      # - if [ $? -ne 0 ]; then echo "error, sam deploy"; cd ..; exit 10; fi
+      # - aws s3 ls $S3_BUCKET_BE/$S3_BUCKET_BE_PREFIX
+      - sam deploy -t template.yaml --stack-name $BE_JS_STACK_NAME --capabilities CAPABILITY_NAMED_IAM --region $GLASSWALL_REGIN
       - if [ $? -ne 0 ]; then echo "error, sam deploy"; cd ..; exit 10; fi
-      - aws s3 ls $S3_BUCKET_BE/$S3_BUCKET_BE_PREFIX
       - cd ..
 
   post_build:
